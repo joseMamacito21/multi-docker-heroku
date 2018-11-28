@@ -3,7 +3,7 @@ services:
   api:
     build:
       context: ./api
-      dockerfile: Dockerfile.server
+      dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
       - ./api:/app
@@ -16,14 +16,14 @@ services:
   nginx:
     build:
       context: ./nginx
-      dockerfile: Dockerfile.nginx
+      dockerfile: Dockerfile.dev
     ports:
       - "3050:80"
     restart: always
   client:
     build:
       context: ./frontend
-      dockerfile: Dockerfile.frontend
+      dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
       - ./frontend:/app
