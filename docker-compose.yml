@@ -22,8 +22,8 @@ services:
     restart: always
   client:
     build:
-      context: ./client
+      context: ./frontend
       dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
-      - ./client:/app
+      - ./frontend:/app
