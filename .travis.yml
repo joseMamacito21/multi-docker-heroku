@@ -1,0 +1,14 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t josemelendezbolanos21/multi-heroku-test -f ./frontend/Dockerfile.dev ./frontend
+
+script:
+  - docker run josemelendezbolanos21/multi-heroku-test npm run test -- --coverage
+
+after_success:
+  - docker build -t josemelendezbolanos21/multi-heroku-frontend ./frontend
+  - docker build -t josemelendezbolanos21/multi-heroku-api ./api
+  - docker build -t josemelendezbolanos21/multi-heroku-nginx ./nginx
