@@ -12,3 +12,9 @@ after_success:
   - docker build -t josemelendezbolanos21/multi-heroku-frontend ./frontend
   - docker build -t josemelendezbolanos21/multi-heroku-api ./api
   - docker build -t josemelendezbolanos21/multi-heroku-nginx ./nginx
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push josemelendezbolanos21/multi-heroku-frontend
+  - docker push josemelendezbolanos21/multi-heroku-api
+  - docker push josemelendezbolanos21/multi-heroku-nginx
